@@ -1,12 +1,11 @@
 {
-  "name": "mailchimp-signup",
+  "name": "@firstandthird/mailchimp-signup",
   "version": "1.0.0",
   "description": "Mailchimp subscribe simple UI",
   "main": "dist/mailchimp-signup.js",
   "module": "lib/mailchimp-signup",
   "scripts": {
-    "build": "scriptkit build",
-    "dev": "scriptkit dev",
+    "start": "scriptkit",
     "test": "cat test/mailchimp-signup.test.dist.js | tape-run --browser phantomjs --render tap-spec",
     "prepublish": "scriptkit"
   },
