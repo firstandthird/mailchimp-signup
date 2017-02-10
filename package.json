@@ -26,14 +26,14 @@
   },
   "homepage": "https://github.com/firstandthird/mailchimp-signup#readme",
   "devDependencies": {
-    "eslint-config-firstandthird": "^3.2.0",
-    "eslint-plugin-import": "^2.2.0",
-    "phantomjs": "^2.1.7",
+    "eslint-config-firstandthird": "3.2.0",
+    "eslint-plugin-import": "2.2.0",
+    "phantomjs": "2.1.7",
     "scriptkit": "0.0.22",
-    "static-server": "^2.0.4",
-    "tap-spec": "^4.1.1",
+    "static-server": "2.0.4",
+    "tap-spec": "4.1.1",
     "tape-rollup": "4.6.4",
-    "tape-run": "^2.1.6"
+    "tape-run": "2.2.0"
   },
   "eslintConfig": {
     "env": {
@@ -60,8 +60,8 @@
   },
   "dependencies": {
     "@firstandthird/jsonp": "1.0.0",
-    "domassist": "^1.5.0",
-    "domodule": "5.0.1",
+    "domassist": "1.6.0",
+    "domodule": "5.1.0",
     "formobj": "3.0.0"
   },
   "directories": {
