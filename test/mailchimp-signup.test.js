@@ -15,7 +15,7 @@ const setup = text => {
 
   container.innerHTML = text || `
     <div data-module="MailchimpSubscribe">
-      <form class="form" data-action="submit" data-action-type="submit" action="${ENDPOINT}">        
+      <form class="form" data-action="submit" data-action-type="submit" action="${ENDPOINT}">
         <div data-name="fields" class="form-elements">
           <input type="hidden" name="REF" value="${REF}"/>
           <input type="text" name="EMAIL">
@@ -54,14 +54,14 @@ test('setup', assert => {
 
   assert.throws(() => {
     setup(`<div data-module="MailchimpSubscribe">
-            <form class="form" data-action="submit" data-action-type="submit" action="${ENDPOINT}">        
+            <form class="form" data-action="submit" data-action-type="submit" action="${ENDPOINT}">
             </form>
           </div>`);
   }, /submitMessage is required as named for MailchimpSubscribe, but is missing!/, 'submitMessage required');
 
   assert.throws(() => {
     setup(`<div data-module="MailchimpSubscribe">
-            <form class="form" data-action="submit" data-action-type="submit" action="${ENDPOINT}">        
+            <form class="form" data-action="submit" data-action-type="submit" action="${ENDPOINT}">
             </form>
             <span class="font-large" data-name="submitMessage"></span>
           </div>`);
@@ -90,7 +90,7 @@ test('callback', assert => {
   const instance = modules[0];
 
   instance.displayResult({});
-  assert.ok(instance.els.fields.classList.contains('hide'), 'fields are hidden');
+  assert.notOk(instance.els.fields.classList.contains('hide'), 'fields are not hidden');
   assert.equals(instance.els.submitMessage.textContent, 'Sorry. Unable to subscribe. Please try again later.', 'message should be default if not provided');
   assert.notOk(instance.els.submitMessage.classList.contains('hide'), 'message is shown');
   assert.end();
