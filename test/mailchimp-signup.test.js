@@ -96,6 +96,26 @@ test('callback', assert => {
   assert.end();
 });
 
+test('callback custom', assert => {
+  const modules = setup(`<div data-module="MailchimpSubscribe" data-module-unable-message="Well, that's embarrassing">
+      <form class="form" data-action="submit" data-action-type="submit" action="${ENDPOINT}">
+        <div data-name="fields" class="form-elements">
+          <input type="hidden" name="REF" value="${REF}"/>
+          <input type="text" name="EMAIL">
+          <button type="submit">Subscribe</button>
+        </div>
+        <span class="hide" data-name="submitMessage"></span>
+      </form>
+    </div>`);
+  const instance = modules[0];
+
+  instance.displayResult({});
+  assert.notOk(instance.els.fields.classList.contains('hide'), 'fields are not hidden');
+  assert.equals(instance.els.submitMessage.textContent, 'Well, that\'s embarrassing', 'custom message should be default if not provided');
+  assert.notOk(instance.els.submitMessage.classList.contains('hide'), 'message is shown');
+  assert.end();
+});
+
 test('callback - success', assert => {
   const modules = setup();
   const instance = modules[0];
@@ -105,12 +125,52 @@ test('callback - success', assert => {
   assert.end();
 });
 
+test('callback - custom success', assert => {
+  const modules = setup(`<div data-module="MailchimpSubscribe" data-module-thank-message="Congratulations, you have been subscribed">
+      <form class="form" data-action="submit" data-action-type="submit" action="${ENDPOINT}">
+        <div data-name="fields" class="form-elements">
+          <input type="hidden" name="REF" value="${REF}"/>
+          <input type="text" name="EMAIL">
+          <button type="submit">Subscribe</button>
+        </div>
+        <span class="hide" data-name="submitMessage"></span>
+      </form>
+    </div>`);
+  const instance = modules[0];
+
+  instance.displayResult({ result: 'success' });
+  assert.equals(instance.els.submitMessage.textContent, 'Congratulations, you have been subscribed', 'should thank with custom message if result is successful');
+  assert.end();
+});
+
 test('callback - error', assert => {
   const modules = setup();
   const instance = modules[0];
 
   instance.displayResult({ result: 'error', msg: 'already subscribed' });
   assert.equals(instance.els.submitMessage.textContent, 'You\'re already subscribed. Thank you.', 'should show a message if already subscribed');
+  instance.displayResult({ result: 'error', msg: 'custom message' });
+  assert.equals(instance.els.submitMessage.textContent, 'custom message', 'should show a custom message if given');
+  assert.end();
+});
+
+test('callback - custom error', assert => {
+  const modules = setup(`<div data-module="MailchimpSubscribe" 
+              data-module-thank-message="Congratulations, you have been subscribed"
+              data-module-already-message="You already did it">
+      <form class="form" data-action="submit" data-action-type="submit" action="${ENDPOINT}">
+        <div data-name="fields" class="form-elements">
+          <input type="hidden" name="REF" value="${REF}"/>
+          <input type="text" name="EMAIL">
+          <button type="submit">Subscribe</button>
+        </div>
+        <span class="hide" data-name="submitMessage"></span>
+      </form>
+    </div>`);
+  const instance = modules[0];
+
+  instance.displayResult({ result: 'error', msg: 'already subscribed' });
+  assert.equals(instance.els.submitMessage.textContent, 'You already did it', 'should show a custom message if already subscribed');
   instance.displayResult({ result: 'error', msg: 'custom message' });
   assert.equals(instance.els.submitMessage.textContent, 'custom message', 'should show a custom message if given');
   assert.end();
