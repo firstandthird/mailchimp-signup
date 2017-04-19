@@ -57,8 +57,8 @@
   },
   "dependencies": {
     "@firstandthird/jsonp": "1.0.0",
-    "domassist": "1.8.0",
-    "domodule": "5.1.2",
+    "domassist": "^1.9.0",
+    "domodule": "^5.1.2",
     "formobj": "4.0.0"
   },
   "directories": {
