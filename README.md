@@ -1,4 +1,4 @@
-# Mailchimp Signup UI
+# Mailchimp Signup UI [![Build Status](https://travis-ci.org/firstandthird/mailchimp-signup.svg?branch=master)](https://travis-ci.org/firstandthird/mailchimp-signup)
 
 ## Usage
 
