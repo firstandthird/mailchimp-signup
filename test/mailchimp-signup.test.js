@@ -1,5 +1,6 @@
 import test from 'tape-rollup';
-import MailchimpSignup from '../lib/mailchimp-signup';
+import MailchimpSignup, { MailchimpSubscribeEvents as Events } from '../lib/mailchimp-signup';
+import { once } from 'domassist';
 
 const ENDPOINT = '/test/index.html';
 const REF = '1234';
@@ -117,12 +118,15 @@ test('callback custom', assert => {
 });
 
 test('callback - success', assert => {
+  assert.plan(2);
   const modules = setup();
   const instance = modules[0];
 
+  once(document.body, Events.Subscribe, () => {
+    assert.ok(true, 'Event fired');
+  });
   instance.displayResult({ result: 'success' });
   assert.equals(instance.els.submitMessage.textContent, 'Thank you!', 'should thank if result is successful');
-  assert.end();
 });
 
 test('callback - custom success', assert => {
@@ -144,14 +148,18 @@ test('callback - custom success', assert => {
 });
 
 test('callback - error', assert => {
+  assert.plan(3);
   const modules = setup();
   const instance = modules[0];
+
+  once(document.body, Events.Error, () => {
+    assert.ok(true, 'Event fired');
+  });
 
   instance.displayResult({ result: 'error', msg: 'already subscribed' });
   assert.equals(instance.els.submitMessage.textContent, 'You\'re already subscribed. Thank you.', 'should show a message if already subscribed');
   instance.displayResult({ result: 'error', msg: 'custom message' });
   assert.equals(instance.els.submitMessage.textContent, 'custom message', 'should show a custom message if given');
-  assert.end();
 });
 
 test('callback - custom error', assert => {
