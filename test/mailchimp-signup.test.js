@@ -78,7 +78,7 @@ test('submit', assert => {
   const form = document.querySelector('form');
   instance.submit(form, { preventDefault: () => {} });
   const callbackName = getCallbackName()[0];
-  const endpoint = `${ENDPOINT}&REF=${REF}&EMAIL=&c=${callbackName}`;
+  const endpoint = `${ENDPOINT}&REF=${REF}&EMAIL=?c=${callbackName}`;
   assert.equal(typeof window[callbackName], 'function', 'should have created a callback');
   assert.ok(getScripts(ENDPOINT)[0].indexOf(endpoint) > -1, 'should have a correctly formed jsonp query');
 
