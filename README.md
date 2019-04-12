@@ -1,4 +1,12 @@
-# Mailchimp Signup UI [![Build Status](https://travis-ci.org/firstandthird/mailchimp-signup.svg?branch=master)](https://travis-ci.org/firstandthird/mailchimp-signup)
+# Mailchimp Signup UI [![Build Status](https://travis-ci.org/firstandthird/mailchimp-signup.svg?branch=master)](https://travis-ci.org/firstandthird/mailchimp-signup) ![npm](https://img.shields.io/npm/v/@firstandthird/mailchimp-signup.svg)
+
+Mailchimp subscribe simple UI.
+
+## Installation
+
+```js
+npm install @firstandthird/mailchimp-signup
+```
 
 ## Usage
 
