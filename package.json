@@ -2,12 +2,13 @@
   "name": "@firstandthird/mailchimp-signup",
   "version": "1.3.1",
   "description": "Mailchimp subscribe simple UI",
-  "main": "dist/mailchimp-signup.js",
-  "module": "lib/mailchimp-signup",
+  "main": "lib/mailchimp-signup",
+  "module": "dist/mailchimp-signup.esm.js",
   "scripts": {
     "start": "scriptkit",
     "dev": "scriptkit dev",
     "build": "scriptkit build",
+    "pretest": "scriptkit build",
     "test": "cat test/mailchimp-signup.test.dist.js | tape-run --static . --browser phantomjs --render tap-spec",
     "prepublishOnly": "scriptkit"
   },
@@ -29,13 +30,13 @@
   "homepage": "https://github.com/firstandthird/mailchimp-signup#readme",
   "devDependencies": {
     "eslint-config-firstandthird": "^4.3.0",
-    "eslint-plugin-import": "^2.9.0",
-    "phantomjs-prebuilt": "^2.1.14",
-    "scriptkit": "^0.3.0",
+    "eslint-plugin-import": "^2.16.0",
+    "phantomjs-prebuilt": "^2.1.16",
+    "scriptkit": "^2.0.3",
     "static-server": "^3.0.0",
-    "tap-spec": "^4.1.1",
+    "tap-spec": "^5.0.0",
     "tape-rollup": "^4.6.4",
-    "tape-run": "^3.0.4"
+    "tape-run": "^5.0.0"
   },
   "eslintConfig": {
     "env": {
@@ -56,12 +57,9 @@
     }
   },
   "dependencies": {
-    "@firstandthird/jsonp": "^1.0.0",
-    "domassist": "^1.9.0",
-    "domodule": "^5.1.2",
-    "formobj": "^4.0.1"
-  },
-  "directories": {
-    "test": "test"
+    "@firstandthird/jsonp": "^1.0.1",
+    "domassist": "^2.0.2",
+    "domodule": "^6.0.0",
+    "formobj": "^5.0.0"
   }
 }
