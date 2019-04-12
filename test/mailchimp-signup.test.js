@@ -1,5 +1,5 @@
 import test from 'tape-rollup';
-import MailchimpSignup, { MailchimpSubscribeEvents as Events } from '../lib/mailchimp-signup';
+import { MailchimpSubscribe, MailchimpSubscribeEvents as Events } from '../lib/mailchimp-signup';
 import { once } from 'domassist';
 
 const ENDPOINT = '/test/index.html';
@@ -26,7 +26,7 @@ const setup = text => {
       </form>
     </div>`;
 
-  return MailchimpSignup.discover();
+  return MailchimpSubscribe.discover();
 };
 
 const getCallbackName = () => Object.keys(window)
@@ -43,8 +43,9 @@ const teardown = () => {
 init();
 
 test('module register', assert => {
-  assert.equal(typeof MailchimpSignup.modules, 'object');
-  assert.equal(Object.keys(MailchimpSignup.modules).length, 1, 'one module registered');
+  const modules = setup();
+  assert.equal(typeof modules[0], 'object');
+  assert.equal(modules.length, 1, 'one module registered');
   assert.end();
 });
 
@@ -163,7 +164,7 @@ test('callback - error', assert => {
 });
 
 test('callback - custom error', assert => {
-  const modules = setup(`<div data-module="MailchimpSubscribe" 
+  const modules = setup(`<div data-module="MailchimpSubscribe"
               data-module-thank-message="Congratulations, you have been subscribed"
               data-module-already-message="You already did it">
       <form class="form" data-action="submit" data-action-type="submit" action="${ENDPOINT}">
