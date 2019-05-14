@@ -1,5 +1,5 @@
 import test from 'tape-rollup';
-import MailchimpSignup, { MailchimpSubscribeEvents as Events } from '../lib/mailchimp-signup';
+import MailchimpSignup, { MailchimpSubscribeEvents as Events } from '../';
 import { once } from 'domassist';
 
 const ENDPOINT = '/test/index.html';
@@ -41,12 +41,6 @@ const teardown = () => {
 };
 
 init();
-
-test('module register', assert => {
-  assert.equal(typeof MailchimpSignup.modules, 'object');
-  assert.equal(Object.keys(MailchimpSignup.modules).length, 1, 'one module registered');
-  assert.end();
-});
 
 test('setup', assert => {
   assert.throws(() => {
