@@ -1,6 +1,6 @@
 {
   "name": "@firstandthird/mailchimp-signup",
-  "version": "2.0.0",
+  "version": "2.1.0",
   "description": "Mailchimp Subscribe simple UI",
   "main": "index.js",
   "module": "dist/mailchimp-signup.js",
