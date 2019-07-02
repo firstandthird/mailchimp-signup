@@ -1,9 +1,8 @@
-before_script:
-  - 'npm run build'
 language: node_js
 node_js:
   - "8"
-  - "9"
+  - "10"
+  - "12"
 cache:
   directories:
     - travis_phantomjs
